@@ -1,0 +1,27 @@
+<div>
+    <input type="file" (change)="onFileChange($event)" />
+  </div>
+  
+  <div *ngIf="categories.length > 0">
+    <label for="category">Categoría:</label>
+    <select id="category" [(ngModel)]="selectedCategory">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+  
+  <div *ngIf="categories.length > 0">
+    <label for="topX">Número de elementos del ranking:</label>
+    <input type="number" id="topX" [(ngModel)]="topX" min="1">
+  </div>
+  
+  <button (click)="uploadData()">Cargar Ranking</button>
+  
+  <div *ngIf="projects.length > 0">
+    <h2>Ranking de Proyectos</h2>
+    <ul>
+      <li *ngFor="let project of projects">
+        {{ project.name }} - Valoración: {{ project.rating }}
+      </li>
+    </ul>
+  </div>
+  
